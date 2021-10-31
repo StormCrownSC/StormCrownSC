@@ -1,0 +1,208 @@
+main {
+    background-color: #EDEBE9;
+}
+
+/*  HEADER    */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    #border: 5px solid;
+}
+
+
+.logo_header, .login_href{
+    z-index: 5;
+    padding: 10px;
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.logo_header:hover, .login_href:hover{
+    z-index: 5;
+    color: purple;
+}
+
+
+
+
+/*  LOGIN   */
+
+.login_block{
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.container_login {
+    position: absolute;
+    padding: 30px;
+    background-color: lightgrey;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.login_main_text {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.login_inp, .password_inp {
+    height: 22px;
+    width: 270px;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.login_text{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.login_bottom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    color: blue;
+}
+
+#enter {
+    font-size: 25px;
+    margin-bottom: 20px;
+    width: 278px;
+    background-color: blue;
+    color: white;
+    border: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#enter:hover {
+    background-color: #3552CF;
+}
+
+#registration {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#forgot:hover, #registration:hover {
+    color: black;
+}
+
+
+/*  MAIN   */
+
+.main_block {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.container_main {
+    position: absolute;
+    padding: 30px;
+    background-color: lightgrey;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.main_href{
+    z-index: 5;
+    padding: 10px;
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.main_href:hover{
+    z-index: 5;
+    color: purple;
+}
+
+/*  CHESS */
+
+.chess_block {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.container_chess{
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+table {
+    width: 640px;
+    height: 640px;
+
+}
+
+.black {
+    width: 80px;
+    height: 80px;
+    background-color: #B98A63;
+
+    vertical-align: center;
+    text-align: center;
+}
+
+.white {
+    width: 80px;
+    height: 80px;
+    background-color: #F0DFB5;
+
+    vertical-align: center;
+    text-align: center;
+}
