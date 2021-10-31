@@ -144,7 +144,6 @@ function moveKing(color, fromPoly, toPoly){
 }
 
 // Создание доски
-
 function table_create(){
     let table = document.createElement("table");
     let container = document.getElementsByClassName("container_chess")[0];
