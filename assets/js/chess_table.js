@@ -1,5 +1,6 @@
 var map = new Array(64);
 map = ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
+colorStroke = "white"
 $(function () {
     table_create();
     setDroppable();
@@ -29,11 +30,15 @@ function moveFigure(fromPoly, toPoly){
     let fig = /\/([\w]+).png/.exec(elem)[0].replace("/", "").replace(".png", "");
     let color = getColor(poly);
     fig = /_[a-zA-Z]+/.exec(fig)[0].replace("_", "");
-    if (checkStroke(fig, color, fromPoly, toPoly)) {
+    if (checkStroke(fig, color, fromPoly, toPoly) && color == colorStroke) {
         poly.innerHTML = "";
         newPoly.innerHTML = elem;
         map[toPoly] = map[fromPoly];
         map[fromPoly] = '0';
+        if (colorStroke == "white")
+            colorStroke = "black";
+        else if (colorStroke == "black")
+            colorStroke = "white";
         setDraggable();
     }
     else {
