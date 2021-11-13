@@ -1,5 +1,6 @@
-var map = new Array(64);
+var map = new Array(64), list_stroke = new Array(1000), count_stroke = 0, my_color = "white";
 map = ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
+list_stroke[count_stroke] = map;
 colorStroke = "white"
 $(function () {
     table_create();
@@ -18,6 +19,7 @@ function setDroppable() {
             let toPoly = this.id;
             moveFigure(fromPoly, toPoly);
         }
+
     })
 }
 
@@ -35,6 +37,8 @@ function moveFigure(fromPoly, toPoly){
         newPoly.innerHTML = elem;
         map[toPoly] = map[fromPoly];
         map[fromPoly] = '0';
+        count_stroke += 1;
+        list_stroke[count_stroke] = map;
         if (colorStroke == "white")
             colorStroke = "black";
         else if (colorStroke == "black")
@@ -152,6 +156,7 @@ function moveKing(color, fromPoly, toPoly){
 
 function table_create(){
     let table = document.createElement("table");
+    table.className = "table_chess";
     let container = document.getElementsByClassName("container_chess")[0];
     for (let i = 0; i < 8; i++) {
         let tr = document.createElement('tr');
@@ -173,7 +178,6 @@ function table_create(){
     }
     container.appendChild(table);
     setDraggable();
-    //createFigures()
 }
 
 function getFigures(figure, cord){
@@ -197,6 +201,13 @@ function getFigures(figure, cord){
 
 // Служебные
 
+function reverse(){
+    map = map.reverse();
+    let table = document.getElementsByClassName("table_chess")[0];
+    table.remove();
+    table_create();
+}
+
 function showFiguresPHP() {
     console.log(map);
 }
@@ -210,6 +221,7 @@ function getColor(elem){
         return "";
     }
 }
+
 function getRows(number){
     if (number < 8)
         return 8;
