@@ -1,34 +1,86 @@
-main {
-    background-color: #EDEBE9;
+/* LIGHT THEME */
+.light-theme {
+    color: #333333;
+    background-color: rgb(237, 235, 233)
 }
 
 /*  HEADER    */
-header {
+.light-theme header {
     display: flex;
     justify-content: space-between;
     height: 50px;
-    #border: 5px solid;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
-
-.logo_header, .login_href{
+.light-theme .logo_header{
     z-index: 5;
     padding: 10px;
-    color: black;
     font-size: 30px;
+    text-decoration: none;
+    color: rgb(54, 52, 48);
+}
+
+.light-theme .login_href {
+    z-index: 5;
+    padding: 10px;
+    color: rgb(54, 52, 48);
+    font-size: 20px;
     text-decoration: none;
 }
 
-.logo_header:hover, .login_href:hover{
+.light-theme .settings, .light-theme  .fon, .light-theme  .style-figures, .light-theme  .style-board {
     z-index: 5;
-    color: purple;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(54, 52, 48);
+}
+
+.light-theme .game_header, .light-theme .edu_header {
+    z-index: 5;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(54, 52, 48);
+}
+
+.light-theme .logo_header:hover, .light-theme  .login_href:hover, .light-theme .settings:hover, .light-theme  .fon:hover, .light-theme  .dark:hover, .light-theme  .light:hover, .light-theme  .game_header:hover, .light-theme  .edu_header:hover, .light-theme  .style-figures:hover, .light-theme  .style-board:hover {
+    z-index: 5;
+    color: black;
 }
 
 
-/*  LOGIN   */
+.light-theme .dropdown, .light-theme  .dropdown_fon {
+    z-index: 5;
+    margin-top: 10px;
+    position: relative;
+    color: rgb(54, 52, 48);
+}
 
-.login_block{
-    z-index: 0;
+.light-theme .dropdown-content, .light-theme  .dropdown_fon-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+    color: rgb(54, 52, 48);
+}
+
+.light-theme .dropdown-content a, .light-theme  .dropdown_fon-content a {
+    color: rgb(54, 52, 48);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+/*  LOGIN   */
+.light-theme .login_block{
+    z-index: 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -38,10 +90,10 @@ header {
     align-items: center;
     align-content: center;
     justify-content: center;
-
+    visibility: hidden;
 }
 
-.container_login {
+.light-theme .container_login {
     position: absolute;
     padding: 30px;
     background-color: lightgrey;
@@ -54,30 +106,30 @@ header {
     justify-content: center;
 }
 
-.login_main_text {
+.light-theme .login_main_text {
     font-size: 30px;
     margin-bottom: 30px;
 }
 
-.error {
+.light-theme .error {
     color: red;
     margin-bottom: 20px;
     font-size: 20px;
 }
 
-.login_inp, .password_inp {
+.light-theme .login_inp, .light-theme  .password_inp {
     height: 22px;
     width: 270px;
     font-size: 15px;
     margin-bottom: 30px;
 }
 
-.login_text{
+.light-theme .login_text{
     font-size: 16px;
     margin-bottom: 5px;
 }
 
-.login_bottom{
+.light-theme .login_bottom{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -86,7 +138,7 @@ header {
     color: blue;
 }
 
-#enter {
+.light-theme #enter {
     font-size: 25px;
     margin-bottom: 20px;
     width: 278px;
@@ -99,23 +151,25 @@ header {
     justify-content: center;
 }
 
-#enter:hover {
+.light-theme #enter:hover {
     background-color: #3552CF;
 }
 
-#registration {
+.light-theme #registration {
     font-size: 16px;
     text-decoration: none;
 }
 
-#forgot:hover, #registration:hover {
+.light-theme #forgot:hover, .light-theme  #registration:hover {
     color: black;
 }
 
 
 /*  MAIN   */
 
-.main_block {
+
+
+.light-theme main {
     z-index: 0;
     position: fixed;
     top: 0;
@@ -126,10 +180,11 @@ header {
     align-items: center;
     align-content: center;
     justify-content: center;
-
+    visibility: visible;
 }
 
-.container_main {
+.light-theme .container_main {
+    z-index: 1;
     position: absolute;
     padding: 30px;
     background-color: lightgrey;
@@ -142,23 +197,23 @@ header {
     justify-content: center;
 }
 
-.main_href{
-    z-index: 5;
+.light-theme .main_href{
+    z-index: 2;
     padding: 10px;
     color: black;
     font-size: 30px;
     text-decoration: none;
 }
 
-.main_href:hover{
+.light-theme .main_href:hover{
     z-index: 5;
-    color: purple;
+    color: black;
 }
 
 /*  CHESS */
 
 
-.chess_block {
+.light-theme .chess_block {
     z-index: 0;
     position: fixed;
     top: 0;
@@ -172,8 +227,8 @@ header {
 
 }
 
-.container_chess{
-    position: absolute;
+.light-theme .container_chess{
+    position: relative;
 
     display: flex;
     flex-direction: column;
@@ -182,15 +237,14 @@ header {
     justify-content: center;
 }
 
-table {
+.light-theme table {
     width: 640px;
     height: 640px;
     border-collapse: collapse;
     border-spacing: 0;
-    boder: 0;
 }
 
-.black {
+.light-theme .black {
     width: 80px;
     height: 80px;
     background-color: #B98A63;
@@ -199,7 +253,7 @@ table {
     text-align: center;
 }
 
-.white {
+.light-theme .white {
     width: 80px;
     height: 80px;
     background-color: #F0DFB5;
@@ -208,34 +262,381 @@ table {
     text-align: center;
 }
 
-.menu_chess {
-    z-index: 0;
-    position: fixed;
-    top: 40%;
-    left: 70%;
-    height: 20%;
-    min-width: 20%;
+.light-theme .menu_chess {
+    margin: 30px;
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     background-color: lightgray;
 }
 
-.container_menu {
+.light-theme .container_menu {
     display: flex;
     padding-top: 10px;
 }
 
-button {
+.light-theme button {
     margin: 10px;
     background-color: lightgray;
     border: 0;
 }
 
-img {
+.light-theme img {
     pointer-events: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+
+/*  EDUCATION  */
+
+.light-theme .edu {
+    margin-left: 250px; 
+    margin-right: 250px;
+    position: absolute;
+    top: 150px;
+}
+
+.light-theme .education_main .edu {
+    margin-left: 250px; 
+    margin-right: 250px;
+    position: absolute;
+    top: 100px;
+}
+
+.education_main {
+    overflow-y: auto;
+}
+
+.light-theme .info_for_edu {
+    color: rgb(54, 52, 48);
+    text-decoration: none;
+}
+
+.light-theme .info_for_edu:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/*  DARK THEME   */
+
+.dark-theme {
+    z-index: 5;
+    color: rgb(186, 174, 146);
+    background-color: rgb(22, 21, 18);
+}
+
+/*  HEADER    */
+.dark-theme header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.dark-theme .logo_header{
+    z-index: 5;
+    padding: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+}
+
+.dark-theme .login_href {
+    z-index: 5;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+}
+
+.dark-theme .settings, .dark-theme .fon, .dark-theme .style-figures, .dark-theme .style-board {
+    z-index: 5;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+}
+
+.dark-theme .game_header, .dark-theme .edu_header {
+    z-index: 5;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+}
+
+.dark-theme .logo_header:hover, .dark-theme .login_href:hover, .dark-theme .settings:hover, .dark-theme .fon:hover, .dark-theme .dark:hover, .dark-theme .light:hover, .dark-theme .game_header:hover, .dark-theme .edu_header:hover, .dark-theme .style-figures:hover, .dark-theme .style-board:hover {
+    z-index: 5;
+    color: white;
+}
+
+.dark-theme .dropdown, .dark-theme .dropdown_fon {
+    z-index: 5;
+    margin-top: 10px;
+    position: relative;
+}
+
+.dark-theme .dropdown-content, .dark-theme .dropdown_fon-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(60, 57, 52);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.dark-theme .dropdown-content a, .dark-theme .dropdown_fon-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+
+/*  LOGIN   */
+.dark-theme .login_block{
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.dark-theme .container_login {
+    position: absolute;
+    padding: 30px;
+    background-color: lightgrey;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.dark-theme .login_main_text {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.dark-theme .error {
+    color: red;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.dark-theme .login_inp, .dark-theme .password_inp {
+    height: 22px;
+    width: 270px;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.dark-theme .login_text{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.dark-theme .login_bottom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    color: blue;
+}
+
+.dark-theme #enter {
+    font-size: 25px;
+    margin-bottom: 20px;
+    width: 278px;
+    background-color: blue;
+    color: rgb(186, 174, 146);
+    border: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.dark-theme #enter:hover {
+    background-color: #3552CF;
+}
+
+.dark-theme #registration {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.dark-theme #forgot:hover, .dark-theme #registration:hover {
+    color: black;
+}
+
+
+/*  MAIN   */
+
+
+.dark-theme main {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    visibility: visible;
+}
+
+.dark-theme .container_main {
+    z-index: 1;
+    position: absolute;
+    padding: 30px;
+    background-color: rgb(54, 52, 48);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.dark-theme .main_href{
+    z-index: 2;
+    padding: 10px;
+    color: rgb(186, 174, 146);
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.dark-theme .main_href:hover{
+    z-index: 5;
+    color: white;
+}
+
+/*  CHESS */
+
+
+.dark-theme .chess_block {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.dark-theme .container_chess{
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.dark-theme table {
+    width: 640px;
+    height: 640px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.dark-theme .black {
+    width: 80px;
+    height: 80px;
+    background-color: #B98A63;
+
+    vertical-align: center;
+    text-align: center;
+}
+
+.dark-theme .white {
+    width: 80px;
+    height: 80px;
+    background-color: #F0DFB5;
+
+    vertical-align: center;
+    text-align: center;
+}
+
+.dark-theme .menu_chess {
+    margin: 30px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgb(54, 52, 48);
+}
+
+.dark-theme .container_menu {
+    display: flex;
+    padding-top: 10px;
+    background-color: rgb(54, 52, 48);
+}
+
+.dark-theme button {
+    margin: 10px;
+    border: 0;
+    background-color: rgb(54, 52, 48);
+}
+
+.dark-theme img {
+    pointer-events: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/*  EDUCATION  */
+.dark-theme .edu {
+    margin-left: 250px; 
+    margin-right: 250px;
+    position: absolute;
+    top: 150px;
+}
+
+.dark-theme .education_main .edu {
+    margin-left: 250px; 
+    margin-right: 250px;
+    position: absolute;
+    top: 100px;
+}
+
+.education_main {
+    overflow-y: auto;
+}
+
+.dark-theme .info_for_edu {
+    color: rgb(186, 174, 146);
+    text-decoration: none;
+}
+
+.dark-theme .info_for_edu:hover {
+    color: white;
+    text-decoration: none;
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Сироткин Денис">
+    <meta name="description" content="Личный сайт">
+    <meta name="keywords" content="programm,programming,html,css,js,nodejs,python,c++,программирование,программист,код">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+    <title>Регистрация</title>
+</head>
+<body class="light-theme">
+    <header>
+        <header class="header-left">
+            <a class="logo_header" href="index.html">StormCrown</a>
+            <a class="game_header" href="index.html">Игра</a>
+            <a class="edu_header" href="news.html">Новости</a>
+            
+        </header>
+        <header class="header-right">
+            <div class="dropdown">
+                <a class="settings">Настройки</a>
+                <div class="dropdown-content">
+                    <div class="dropdow_fon">
+                        <a class="fon">Фон</a>
+                        <div class="dropdown_fon-content">
+                          <a class="light">Светлая тема</a>
+                          <a class="dark">Тёмная тема</a>
+                        </div>
+                      </div>
+                    <a class="style-figures">Оформление фигур</a>
+                    <a class="style-board">Оформление доски</a>
+                </div>
+              </div>
+            <a class="login_href" href="login.html">Войти</a>
+        </header>
+    </header>
+
+
+
+<div class="login_block">
+    <div class="container_login">
+        <form action="assets/blocks/registration_check.php" method="post">
+            <div class="login_main_text">Регистрация</div>
+            <div class="error"><?php if(array_key_exists( 'registration_free', $_SESSION)){ echo "Заполните все поля"; unset($_SESSION["registration_free"]);}
+                elseif (array_key_exists( 'error_passwords', $_SESSION)){ echo "Пароли не совпадают"; unset($_SESSION["error_passwords"]);} ?></div>
+            <div class="login_text">Введите электронную почту</div>
+            <input class="login_inp" type="email" name="email" value="<?php if(array_key_exists( 'registration_email', $_SESSION))  echo $_SESSION["registration_email"]; else echo ""; ?>">
+            <div class="login_text">Введите логин</div>
+            <input class="login_inp" type="text" name="login" value="<?php if(array_key_exists( 'registration_login', $_SESSION)) echo $_SESSION["registration_login"];  else echo ""; ?>">
+            <div class="login_text">Пароль</div>
+            <input class="password_inp" type="password" name="password">
+            <div class="login_text">Подтвердите пароль</div>
+            <input class="password_inp" type="password" name="double_password"><br>
+            <button type="submit" id="enter">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>
+    <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
+</body>
+</html>

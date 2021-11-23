@@ -1,7 +1,8 @@
-var map = new Array(64), list_stroke = new Array(1000), count_stroke = 0, my_color = "white";
-map = ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
-list_stroke[count_stroke] = map;
-colorStroke = "white"
+var map = new Array(64), count_stroke = 0, colorStroke = "white";
+map = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P','R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+const list_stroke = [];
+list_stroke[count_stroke] = Object.assign({}, map);
+
 $(function () {
     table_create();
     setDroppable();
@@ -9,7 +10,22 @@ $(function () {
 });
 
 function setDraggable() {
-    $('.figure').draggable();
+    if (list_stroke.length - 1 == count_stroke) {
+        $('.figure-white').draggable();
+        $('.figure-black').draggable();
+        if (colorStroke == "white") {
+            $('.figure-white').draggable('enable');
+            $('.figure-black').draggable('disable');
+        }
+        else {
+            $('.figure-white').draggable('disable');
+            $('.figure-black').draggable('enable');
+        }
+    }
+    else {
+        $('.figure-white').draggable('disable');
+        $('.figure-black').draggable('disable');
+    }
 }
 
 function setDroppable() {
@@ -29,6 +45,8 @@ function moveFigure(fromPoly, toPoly){
     let poly = document.getElementById(fromPoly);
     let newPoly = document.getElementById(toPoly);
     let elem = poly.innerHTML.replace(fromPoly, toPoly).replace(/position: relative; [\w\s-;: ]+/, 'position: relative;');
+    console.log(poly.innerHTML);
+    console.log(elem);
     let fig = /\/([\w]+).png/.exec(elem)[0].replace("/", "").replace(".png", "");
     let color = getColor(poly);
     fig = /_[a-zA-Z]+/.exec(fig)[0].replace("_", "");
@@ -38,7 +56,7 @@ function moveFigure(fromPoly, toPoly){
         map[toPoly] = map[fromPoly];
         map[fromPoly] = '0';
         count_stroke += 1;
-        list_stroke[count_stroke] = map;
+        list_stroke[count_stroke] = Object.assign({}, map);
         if (colorStroke == "white")
             colorStroke = "black";
         else if (colorStroke == "black")
@@ -52,7 +70,6 @@ function moveFigure(fromPoly, toPoly){
     }
 }
 
-
 function checkStroke(fig, color, fromPoly, toPoly){
     switch (fig){
         case "pawn": return movePawn(color, fromPoly, toPoly);
@@ -61,7 +78,6 @@ function checkStroke(fig, color, fromPoly, toPoly){
         case "rock": return moveRook(color, fromPoly, toPoly);
         case "queen": return moveQueen(color, fromPoly, toPoly);
         case "king": return moveKing(color, fromPoly, toPoly);
-
     }
 }
 
@@ -87,7 +103,6 @@ function movePawn(color, fromPoly, toPoly){
 function moveKnight(color, fromPoly, toPoly){
     let newPoly = document.getElementById(toPoly);
     let newColor = getColor(newPoly);
-    console.log(fromPoly, toPoly, toPoly - fromPoly);
     if ((Math.abs(fromPoly - toPoly) == 17 || Math.abs(fromPoly - toPoly) == 15) && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 2)
         return true;
     else if ((Math.abs(fromPoly - toPoly) == 6 || Math.abs(fromPoly - toPoly) == 10) && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 1)
@@ -165,47 +180,132 @@ function table_create(){
             if (i%2 == j%2) {
                 td.className = "square white";
                 td.id = String(i * 8 + j);
-                td.innerHTML = getFigures(map[i * 8 + j], i * 8 + j)
+                td.innerHTML = "";
             }
             else {
                 td.className = "square black";
                 td.id = String(i * 8 + j);
-                td.innerHTML = getFigures(map[i * 8 + j], i * 8 + j)
+                td.innerHTML = "";
             }
             tr.appendChild(td);
         }
         table.appendChild(tr);
     }
     container.appendChild(table);
+    figure_create();
+}
+
+function figure_create() {
+    let tds = document.getElementsByTagName("td");
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            tds[i * 8 + j].innerHTML = getFigures(map[i * 8 + j], i * 8 + j)
+        }
+    }
     setDraggable();
 }
 
 function getFigures(figure, cord){
     switch (figure){
-        case 'K' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'Q' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'R' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'N' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'B' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'P' : return "<div class='figure' id='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'k' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'q' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'r' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'n' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'b' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'p' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
 
-        case 'k' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'q' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'r' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'n' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'b' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'p' : return "<div class='figure' id='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'K' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'Q' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'R' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'N' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'B' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+        case 'P' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
         case '0' : return "";
     }
 }
 
 // Служебные
 
+function stockfish_move() {
+    var stockfish = new Worker('/stockfish.js-master/stockfish.js');
+    stockfish.postMessage('go depth 15');
+    stockfish.onmessage = function(event) {
+        console.log(event.data);
+    };
+}
+
+function generationFen(board){
+    let fen = "", RANK_SEPARATOR = "/";
+    for (let i = 0; i < 8; i++) {
+        let empty = 0;
+        let rankFen = "";
+        for (let j = 0; j < 8; j++) {
+            if(board[i * 8 + j] == 0) {
+                empty++;
+            }
+            else {
+                if (empty != 0)
+                    rankFen += empty;
+                rankFen += board[i * 8 + j];
+                empty = 0;
+            }
+        }
+        if (empty != 0) rankFen += empty;
+        fen += rankFen;
+        if (!(i == 7))
+            fen += RANK_SEPARATOR;
+        else {
+            fen += " ";
+        }
+    }
+    return fen;
+}
+
+function back_stroke(){
+    if (count_stroke > 0) {
+        count_stroke -= 1;
+        $('.figure-white').draggable('disable');
+        $('.figure-black').draggable('disable');
+        map = transformToMap(count_stroke);
+        figure_create();
+    }
+}
+
+function next_stroke(){
+    if (count_stroke < list_stroke.length - 1) {
+        count_stroke += 1;
+        map = transformToMap(count_stroke);
+        figure_create();
+        setDraggable();
+    }
+}
+
+function fullBack_stroke(){
+    count_stroke = 0;
+    $('.figure-white').draggable('disable');
+    $('.figure-black').draggable('disable');
+    map = transformToMap(count_stroke);
+    figure_create();
+}
+
+function fullNext_stroke(){
+    count_stroke = list_stroke.length - 1;
+    map = transformToMap(count_stroke);
+    figure_create();
+    setDraggable();
+}
+
 function reverse(){
     map = map.reverse();
-    let table = document.getElementsByClassName("table_chess")[0];
-    table.remove();
-    table_create();
+    figure_create();
+}
+
+function transformToMap(count) {
+    let temp = [];
+    for (let [key, value] of Object.entries(list_stroke[count])) {
+        temp.push(value);
+    }
+    return temp;
 }
 
 function showFiguresPHP() {

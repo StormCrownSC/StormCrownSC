@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Сироткин Денис">
+    <meta name="description" content="Личный сайт">
+    <meta name="keywords" content="programm,programming,html,css,js,nodejs,python,c++,программирование,программист,код">
+    <link type="text/css" rel="stylesheet" media="all" href="assets/css/style.css" id="theme_css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+    <title>Главная</title>
+</head>
+
+<body class="dark-theme">
+    <header>
+        <header class="header-left">
+            <a class="logo_header" href="index.html">StormCrown</a>
+            <a class="game_header" href="index.html">Игра</a>
+            <a class="edu_header" href="education.html">Обучение</a>
+            
+        </header>
+        <header class="header-right">
+            <div class="dropdown">
+                <a class="settings">Настройки</a>
+                <div class="dropdown-content">
+                    <div class="dropdow_fon">
+                        <a class="fon">Фон</a>
+                        <div class="dropdown_fon-content">
+                          <a class="light">Светлая тема</a>
+                          <a class="dark">Тёмная тема</a>
+                        </div>
+                      </div>
+                    <a class="style-figures">Оформление фигур</a>
+                    <a class="style-board">Оформление доски</a>
+                </div>
+              </div>
+            <a class="login_href">Войти</a>
+        </header>
+    </header>
+
+    <main>
+        <div class="container_main">
+            <a class ="main_href" href="chess.html">Играть с компьютером</a>
+        </div>
+    <main>
+        <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
+
+    
+
+    <div class="login_block">
+        <div class="container_login">
+            <form action="assets/blocks/login_check.php" method="post">
+                <div class="login_main_text">Войти</div>
+                <div class="login_text">Логин или электронная почта</div>
+                <input class="login_inp" type="text" name="login" value="">
+                <div class="login_text">Пароль</div>
+                <input class="password_inp" type="password" name="password"><br>
+                <button type="submit" id="enter">Войти</button>
+                <div class="login_bottom">
+                    <a id="registration" href="registration.html">Зарегистрироваться</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

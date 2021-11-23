@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Сироткин Денис">
+    <meta name="description" content="Личный сайт">
+    <meta name="keywords" content="programm,programming,html,css,js,nodejs,python,c++,программирование,программист,код">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+    <title>Урок 2</title>
+</head>
+
+<body class="dark-theme">
+    <header>
+        <header class="header-left">
+            <a class="logo_header" href="../../index.html">StormCrown</a>
+            <a class="game_header" href="../../chess.html">Игра</a>
+            <a class="edu_header" href="../../education.html">Обучение</a>
+            
+        </header>
+        <header class="header-right">
+            <div class="dropdown">
+                <a class="settings">Настройки</a>
+                <div class="dropdown-content">
+                    <div class="dropdow_fon">
+                        <a class="fon">Фон</a>
+                        <div class="dropdown_fon-content">
+                          <a class="light">Светлая тема</a>
+                          <a class="dark">Тёмная тема</a>
+                        </div>
+                      </div>
+                    <a class="style-figures">Оформление фигур</a>
+                    <a class="style-board">Оформление доски</a>
+                </div>
+              </div>
+            <a class="login_href">Войти</a>
+        </header>
+    </header>
+
+
+    <main class="education_main">
+        <div class="edu">
+            <h1 style="text-align: center">Урок второй. Шахматная доска.</h1>
+
+            <p>Давай поближе познакомимся с шахматной доской.<br>
+                Игра происходит на доске, поделённой на равные квадратные клетки, или поля. Размер доски — 8×8 клеток. Вертикальные ряды полей (вертикали) 
+                обозначаются латинскими буквами от а до h слева направо, горизонтальные ряды (горизонтали) — цифрами от 1 до 8 снизу вверх; каждое поле 
+                обозначается сочетанием соответствующих буквы и цифры. Поля раскрашены в тёмный и светлый цвета (и называются, соответственно, чёрными и белыми) 
+                так, что соседние по вертикали и горизонтали поля раскрашены в разные цвета. Доска располагается так, чтобы ближнее угловое поле справа от 
+                игрока было белым (для белых это поле h1, для чёрных — поле а8).</p>
+            
+            <img src="../images/urok-2-doska-linii.jpg" alt="Второй урок доска линии" title="Второй урок доска линии" 
+            style="display: block; margin-left: auto; margin-right: auto; width: 50%; width: 280px; height: 280px;">
+            
+            
+            <p>Косые линии доски, проходящие через поля одного цвета, называются диагоналями. Шахматные диагонали бывают белые и чёрные. 
+            Диагонали разные по длине. Бывают совсем маленькие. Диагональ, проведённая из угла в угол, называется большой диагональю.</p>
+            
+            <img src="../images/urok-2-doska-diagonali.jpg" alt="Второй урок доска диагонали" title="Второй урок доска диагонали" 
+            style="display: block; margin-left: auto; margin-right: auto; width: 50%; width: 280px; height: 280px;">
+
+                
+            <p>Как соединяются клетки в горизонталях, вертикалях и диагоналях? В горизонталях соседние клетки соединяются боковыми сторонами, в 
+                вертикалях – верхней и нижней сторонами, а в диагоналях клетки соединяются противоположными углами.</p>
+                
+            <p>Каждая клетка имеет своё обозначение. Узнать название каждой клетки помогут буквы и цифры по краям шахматной доски. Требуется выучить названия 
+                букв и правильно их писать.</p>
+        </div>
+    </main>
+
+    <div class="login_block">
+        <div class="container_login">
+            <form>
+                <div class="login_main_text">Войти</div>
+                <div class="login_text">Логин или электронная почта</div>
+                <input class="login_inp" type="text" name="login" value="">
+                <div class="login_text">Пароль</div>
+                <input class="password_inp" type="password" name="password"><br>
+                <button type="submit" id="enter">Войти</button>
+                <div class="login_bottom">
+                    <a id="registration" href="registration.html">Зарегистрироваться</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+    <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
+</html>

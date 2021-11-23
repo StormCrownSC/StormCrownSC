@@ -1,0 +1,11 @@
+*.o
+src/.depend
+stockfish.worker.js
+src/stockfish
+
+# Stockfish.js
+src/stockfish.js.map
+src/stockfish.js.mem
+*~
+etc/
+merged_data.json
