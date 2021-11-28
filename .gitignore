@@ -1,0 +1,18 @@
+*~
+.Trash-* 
+.nfs
+.nfs* 
+.idea/
+*.asp 
+*.cer 
+*.csr *.css 
+*.htm *.html 
+*.js 
+*.jsp   
+*.php 
+*.rss 
+*.wasm 
+*.wat 
+*.xhtml
+
+assets/gittest.txt

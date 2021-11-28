@@ -1,3 +1,9 @@
+.figure-black, .figure-white {
+    font-size: 60px;
+    max-height: 60px;
+    cursor: pointer;
+}
+
 /* LIGHT THEME */
 .light-theme {
     color: #333333;
@@ -29,12 +35,22 @@
     text-decoration: none;
 }
 
-.light-theme .settings, .light-theme  .fon, .light-theme  .style-figures, .light-theme  .style-board {
+.light-theme .settings, .light-theme  .fon, .light-theme  .style-figures, .light-theme  .style-board, .light-theme .light, .light-theme .dark,
+.light-theme .figure_settings {
     z-index: 5;
     padding: 10px;
     font-size: 20px;
     text-decoration: none;
     color: rgb(54, 52, 48);
+}
+
+.light-theme .setting_exit {
+    z-index: 5;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+    border-bottom: solid rgb(187, 187, 187);
 }
 
 .light-theme .game_header, .light-theme .edu_header {
@@ -46,30 +62,35 @@
     color: rgb(54, 52, 48);
 }
 
-.light-theme .logo_header:hover, .light-theme  .login_href:hover, .light-theme .settings:hover, .light-theme  .fon:hover, .light-theme  .dark:hover, .light-theme  .light:hover, .light-theme  .game_header:hover, .light-theme  .edu_header:hover, .light-theme  .style-figures:hover, .light-theme  .style-board:hover {
+.light-theme .logo_header:hover, .light-theme  .login_href:hover, .light-theme .settings:hover, .light-theme  .fon:hover, .light-theme  .light:hover, 
+.light-theme  .game_header:hover, .light-theme  .edu_header:hover, .light-theme  .style-figures:hover, .light-theme  
+.style-board:hover, .light-theme .setting_exit:hover, .light-theme .light:hover, .light-theme .dark:hover, .light-theme .figure_settings:hover {
     z-index: 5;
     color: black;
 }
 
 
-.light-theme .dropdown, .light-theme  .dropdown_fon {
+
+.light-theme .dropdown, .light-theme {
     z-index: 5;
     margin-top: 10px;
     position: relative;
     color: rgb(54, 52, 48);
 }
 
-.light-theme .dropdown-content, .light-theme  .dropdown_fon-content {
+.light-theme .dropdown-content {
     display: none;
     position: absolute;
+    top: 40px;
+    right: -50px;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 5;
     color: rgb(54, 52, 48);
 }
 
-.light-theme .dropdown-content a, .light-theme  .dropdown_fon-content a {
+.light-theme .dropdown-content a {
     color: rgb(54, 52, 48);
     padding: 12px 16px;
     text-decoration: none;
@@ -94,6 +115,7 @@
 }
 
 .light-theme .container_login {
+    z-index: 5;
     position: absolute;
     padding: 30px;
     background-color: lightgrey;
@@ -129,15 +151,6 @@
     margin-bottom: 5px;
 }
 
-.light-theme .login_bottom{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    color: blue;
-}
-
 .light-theme #enter {
     font-size: 25px;
     margin-bottom: 20px;
@@ -153,15 +166,6 @@
 
 .light-theme #enter:hover {
     background-color: #3552CF;
-}
-
-.light-theme #registration {
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.light-theme #forgot:hover, .light-theme  #registration:hover {
-    color: black;
 }
 
 
@@ -214,7 +218,7 @@
 
 
 .light-theme .chess_block {
-    z-index: 0;
+    z-index: 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -354,12 +358,22 @@
     color: rgb(186, 174, 146);
 }
 
-.dark-theme .settings, .dark-theme .fon, .dark-theme .style-figures, .dark-theme .style-board {
+.dark-theme .settings, .dark-theme .fon, .dark-theme .style-figures, .dark-theme .style-board, .dark-theme .light, .dark-theme .dark, 
+.dark-theme .figure_settings {
     z-index: 5;
     padding: 10px;
     font-size: 20px;
     text-decoration: none;
     color: rgb(186, 174, 146);
+}
+
+.dark-theme .setting_exit {
+    z-index: 5;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(186, 174, 146);
+    border-bottom: solid rgb(78, 75, 69);
 }
 
 .dark-theme .game_header, .dark-theme .edu_header {
@@ -371,7 +385,9 @@
     color: rgb(186, 174, 146);
 }
 
-.dark-theme .logo_header:hover, .dark-theme .login_href:hover, .dark-theme .settings:hover, .dark-theme .fon:hover, .dark-theme .dark:hover, .dark-theme .light:hover, .dark-theme .game_header:hover, .dark-theme .edu_header:hover, .dark-theme .style-figures:hover, .dark-theme .style-board:hover {
+.dark-theme .logo_header:hover, .dark-theme .login_href:hover, .dark-theme .settings:hover, .dark-theme .fon:hover, .dark-theme .dark:hover, .dark-theme 
+.light:hover, .dark-theme .game_header:hover, .dark-theme .edu_header:hover, .dark-theme .style-figures:hover, .dark-theme .style-board:hover, .dark-theme 
+.setting_exit:hover, .dark-theme .light:hover, .dark-theme .dark:hover, .dark-theme .figure_settings:hover {
     z-index: 5;
     color: white;
 }
@@ -382,16 +398,18 @@
     position: relative;
 }
 
-.dark-theme .dropdown-content, .dark-theme .dropdown_fon-content {
+.dark-theme .dropdown-content {
     display: none;
     position: absolute;
+    top: 40px;
+    right: -50px;
     background-color: rgb(60, 57, 52);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgb(60, 57, 52);
     z-index: 5;
 }
 
-.dark-theme .dropdown-content a, .dark-theme .dropdown_fon-content a {
+.dark-theme .dropdown-content a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -418,8 +436,8 @@
 .dark-theme .container_login {
     position: absolute;
     padding: 30px;
-    background-color: lightgrey;
-
+    background-color: rgb(60, 57, 52);
+    box-shadow: 0px 8px 16px 0px rgb(60, 57, 52);
 
     display: flex;
     flex-direction: column;
@@ -451,15 +469,6 @@
     margin-bottom: 5px;
 }
 
-.dark-theme .login_bottom{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    color: blue;
-}
-
 .dark-theme #enter {
     font-size: 25px;
     margin-bottom: 20px;
@@ -475,15 +484,6 @@
 
 .dark-theme #enter:hover {
     background-color: #3552CF;
-}
-
-.dark-theme #registration {
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.dark-theme #forgot:hover, .dark-theme #registration:hover {
-    color: black;
 }
 
 
@@ -534,7 +534,7 @@
 
 
 .dark-theme .chess_block {
-    z-index: 0;
+    z-index: 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -547,9 +547,8 @@
 
 }
 
-.dark-theme .container_chess{
+.dark-theme .container_chess {
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;

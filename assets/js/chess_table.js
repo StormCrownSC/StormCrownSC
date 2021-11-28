@@ -1,5 +1,7 @@
 var map = new Array(64), count_stroke = 0, colorStroke = "white";
-map = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P','R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+map = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 
+'0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P','R', 'N', 'B', 'Q', 'K', 
+'B', 'N', 'R']
 const list_stroke = [];
 list_stroke[count_stroke] = Object.assign({}, map);
 
@@ -45,12 +47,8 @@ function moveFigure(fromPoly, toPoly){
     let poly = document.getElementById(fromPoly);
     let newPoly = document.getElementById(toPoly);
     let elem = poly.innerHTML.replace(fromPoly, toPoly).replace(/position: relative; [\w\s-;: ]+/, 'position: relative;');
-    console.log(poly.innerHTML);
-    console.log(elem);
-    let fig = /\/([\w]+).png/.exec(elem)[0].replace("/", "").replace(".png", "");
-    let color = getColor(poly);
-    fig = /_[a-zA-Z]+/.exec(fig)[0].replace("_", "");
-    if (checkStroke(fig, color, fromPoly, toPoly) && color == colorStroke) {
+    let fig = map[fromPoly].toLowerCase();
+    if (checkStroke(fig, getColor(fromPoly), fromPoly, toPoly)) {
         poly.innerHTML = "";
         newPoly.innerHTML = elem;
         map[toPoly] = map[fromPoly];
@@ -72,20 +70,20 @@ function moveFigure(fromPoly, toPoly){
 
 function checkStroke(fig, color, fromPoly, toPoly){
     switch (fig){
-        case "pawn": return movePawn(color, fromPoly, toPoly);
-        case "knight": return moveKnight(color, fromPoly, toPoly);
-        case "bishop": return moveBishop(color, fromPoly, toPoly);
-        case "rock": return moveRook(color, fromPoly, toPoly);
-        case "queen": return moveQueen(color, fromPoly, toPoly);
-        case "king": return moveKing(color, fromPoly, toPoly);
+        case "p": return movePawn(color, fromPoly, toPoly);
+        case "n": return moveKnight(color, fromPoly, toPoly);
+        case "b": return moveBishop(color, fromPoly, toPoly);
+        case "r": return moveRook(color, fromPoly, toPoly);
+        case "q": return moveQueen(color, fromPoly, toPoly);
+        case "k": return moveKing(color, fromPoly, toPoly);
     }
 }
 
 function movePawn(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if (newColor == "") {
-        if (((fromPoly >= 48 && fromPoly <= 55 && color == "white") || (fromPoly >= 8 && fromPoly <= 15 && color == "black")) && (Math.abs(fromPoly - toPoly)) / 8 == 2 && newColor != color && getFreeLines(fromPoly, toPoly, 2))
+        if (((fromPoly >= 48 && fromPoly <= 55 && color == "white") || (fromPoly >= 8 && fromPoly <= 15 && color == "black")) 
+        && (Math.abs(fromPoly - toPoly)) / 8 == 2 && newColor != color && getFreeLines(fromPoly, toPoly, 2))
             return true;
         else if ((Math.abs(fromPoly - toPoly)) / 8 == 1)
             return true;
@@ -93,7 +91,8 @@ function movePawn(color, fromPoly, toPoly){
             return false;
     }
     else{
-        if (Math.round((Math.abs(fromPoly - toPoly)) / 8) == 1 && (Math.abs(fromPoly - toPoly) == 7 || Math.abs(fromPoly - toPoly) == 9) && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 1)
+        if (Math.round((Math.abs(fromPoly - toPoly)) / 8) == 1 && (Math.abs(fromPoly - toPoly) == 7 || Math.abs(fromPoly - toPoly) == 9) 
+        && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 1)
             return true;
         else
             return false;
@@ -101,8 +100,7 @@ function movePawn(color, fromPoly, toPoly){
 }
 
 function moveKnight(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if ((Math.abs(fromPoly - toPoly) == 17 || Math.abs(fromPoly - toPoly) == 15) && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 2)
         return true;
     else if ((Math.abs(fromPoly - toPoly) == 6 || Math.abs(fromPoly - toPoly) == 10) && color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 1)
@@ -113,8 +111,7 @@ function moveKnight(color, fromPoly, toPoly){
 }
 
 function moveBishop(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if (Math.abs(fromPoly - toPoly) % 7 == 0 && color != newColor && getFreeLines(fromPoly, toPoly, 3) && Math.abs(fromPoly - toPoly) / 7 == Math.abs(getRows(toPoly) - getRows(fromPoly)))
         return true;
     else if (Math.abs(fromPoly - toPoly) % 9 == 0 && color != newColor && getFreeLines(fromPoly, toPoly, 4) && Math.abs(fromPoly - toPoly) / 9 == Math.abs(getRows(toPoly) - getRows(fromPoly)))
@@ -124,8 +121,7 @@ function moveBishop(color, fromPoly, toPoly){
 }
 
 function moveRook(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if (Math.abs(fromPoly - toPoly) % 8 == 0 && color != newColor && getFreeLines(fromPoly, toPoly, 2))
         return true;
     else if (color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 0 && getFreeLines(fromPoly, toPoly, 1))
@@ -136,8 +132,7 @@ function moveRook(color, fromPoly, toPoly){
 }
 
 function moveQueen(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if (color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 0 && getFreeLines(fromPoly, toPoly, 1))
         return true;
     else if (Math.abs(fromPoly - toPoly) % 8 == 0 && color != newColor && getFreeLines(fromPoly, toPoly, 2))
@@ -151,8 +146,7 @@ function moveQueen(color, fromPoly, toPoly){
 }
 
 function moveKing(color, fromPoly, toPoly){
-    let newPoly = document.getElementById(toPoly);
-    let newColor = getColor(newPoly);
+    let newColor = getColor(toPoly);
     if (color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 1 && Math.abs(toPoly - fromPoly) == 8)
         return true;
     if (color != newColor && Math.abs(getRows(toPoly) - getRows(fromPoly)) == 0 && Math.abs(toPoly - fromPoly) == 1)
@@ -206,21 +200,41 @@ function figure_create() {
 }
 
 function getFigures(figure, cord){
-    switch (figure){
-        case 'k' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'q' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'r' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'n' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'b' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'p' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+    if(localStorage.getItem('figure') == "images"){
+        switch (figure){
+            case 'k' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'q' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'r' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'n' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'b' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'p' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
 
-        case 'K' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'Q' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'R' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'N' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'B' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case 'P' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
-        case '0' : return "";
+            case 'K' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'Q' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'R' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'N' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'B' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'P' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case '0' : return "";
+        }
+    }
+    else if (localStorage.getItem('figure') == "ascii"){
+        switch (figure){
+            case 'k' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9818;</div>".replace('$cord', cord);
+            case 'q' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9819;</div>".replace('$cord', cord);
+            case 'r' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9820;</div>".replace('$cord', cord);
+            case 'n' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9822;</div>".replace('$cord', cord);
+            case 'b' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9821;</div>".replace('$cord', cord);
+            case 'p' : return "<div class='figure-black' id='$cord' style='padding-bottom: 15px'>&#9823;</div>".replace('$cord', cord);
+
+            case 'K' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9812;</div>".replace('$cord', cord);
+            case 'Q' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9813;</div>".replace('$cord', cord);
+            case 'R' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9814;</div>".replace('$cord', cord);
+            case 'N' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9816;</div>".replace('$cord', cord);
+            case 'B' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9815;</div>".replace('$cord', cord);
+            case 'P' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9817;</div>".replace('$cord', cord);
+            case '0' : return "";
+        }
     }
 }
 
@@ -313,13 +327,12 @@ function showFiguresPHP() {
 }
 
 function getColor(elem){
-    try {
-        let fig = /\/([\w]+).png/.exec(elem.innerHTML)[0].replace("/", "").replace(".png", "");
-        return /[a-zA-Z]+_/.exec(fig)[0].replace("_", "");
-    }
-    catch (error){
+    if (map[elem] == "0")
         return "";
-    }
+    else if (map[elem] == map[elem].toLowerCase())
+        return "black";
+    else if (map[elem] == map[elem].toUpperCase())
+        return "white";
 }
 
 function getRows(number){
@@ -342,7 +355,7 @@ function getRows(number){
 
 }
 
-function getFreeLines(fromPoly, toPoly, type){
+function getFreeLines(fromPoly, toPoly, type) {
     if (parseInt(fromPoly) > parseInt(toPoly)) {
         let tmp = fromPoly;
         fromPoly = toPoly;
@@ -350,36 +363,30 @@ function getFreeLines(fromPoly, toPoly, type){
     }
     if (type == 1){
         for (let i = parseInt(fromPoly) + 1; i < parseInt(toPoly); ++i){
-            let newPoly = document.getElementById(i);
-            let newColor = getColor(newPoly);
-            if (newColor != "")
+            if (getColor(i) != "")
                 return false;
         }
         return true;
     }
     else if (type == 2){
         for (let i = parseInt(fromPoly) + 8; i < parseInt(toPoly); i += 8){
-            let newPoly = document.getElementById(i);
-            let newColor = getColor(newPoly);
-            if (newColor != "")
+
+            if (getColor(i) != "")
                 return false;
         }
+        
         return true;
     }
     else if (type == 3){
         for (let i = parseInt(fromPoly) + 7; i < parseInt(toPoly); i += 7){
-            let newPoly = document.getElementById(i);
-            let newColor = getColor(newPoly);
-            if (newColor != "")
+            if (getColor(i) != "")
                 return false;
         }
         return true;
     }
     else if (type == 4){
         for (let i = parseInt(fromPoly) + 9; i < parseInt(toPoly); i += 9){
-            let newPoly = document.getElementById(i);
-            let newColor = getColor(newPoly);
-            if (newColor != "")
+            if (getColor(i) != "")
                 return false;
         }
         return true;

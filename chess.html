@@ -22,13 +22,7 @@
             <div class="dropdown">
                 <a class="settings">Настройки</a>
                 <div class="dropdown-content">
-                    <div class="dropdow_fon">
-                        <a class="fon">Фон</a>
-                        <div class="dropdown_fon-content">
-                          <a class="light">Светлая тема</a>
-                          <a class="dark">Тёмная тема</a>
-                        </div>
-                      </div>
+                    <a class="fon">Фон</a>
                     <a class="style-figures">Оформление фигур</a>
                     <a class="style-board">Оформление доски</a>
                 </div>
@@ -51,21 +45,18 @@
                 <button class="right-right" onclick="fullNext_stroke();"><img height="20px" width="20px" src="/assets/images/right-right.png"></button>
             </div>
         </div>
+
     </main>
 
     <div class="login_block">
         <div class="container_login">
-            <form action="assets/blocks/login_check.php" method="post">
+            <form>
                 <div class="login_main_text">Войти</div>
-                <!--<div class="error">"Неверный логин или пароль"></div>-->
                 <div class="login_text">Логин или электронная почта</div>
                 <input class="login_inp" type="text" name="login" value="">
                 <div class="login_text">Пароль</div>
                 <input class="password_inp" type="password" name="password"><br>
-                <button type="submit" id="enter">Войти</button>
-                <div class="login_bottom">
-                    <a id="registration" href="registration.html">Зарегистрироваться</a>
-                </div>
+                <button type="button" id="enter">Войти</button>
             </form>
         </div>
     </div>
@@ -75,3 +66,5 @@
 
 </body>
 </html>
+
+
