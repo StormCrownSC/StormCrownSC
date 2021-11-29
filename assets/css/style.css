@@ -103,7 +103,7 @@
 
 /*  LOGIN   */
 .light-theme .login_block{
-    z-index: 5;
+    z-index: 0;
     position: fixed;
     top: 0;
     left: 0;

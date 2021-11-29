@@ -37,59 +37,57 @@
             <a class ="main_href">Играть с компьютером</a>
         </div>
 
-        
+    </main>
+    <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
 
-    <main>
-        <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
-
-        <div class="start_game_block">
-            <div class="container_start_game">
-                <div class="container_extra">
-                    <h1>Сыграть с компьютером</h1>
-                    <div class="control_time_block">
-                        <form>
-                            <span>Контроль времени: </span>
-                            <select class="time_control">
-                                <option selected>Отсутствует</option>
-                                <option>По часам</option>
-                            </select>
-                        </form>
-                        <div class="extra_time_menu">
-                            <span>Минут на партию: </span><span class="time_for_game">5</span>
-                            <input name="range" type="range", class="range", value="7" min="0" max="32" step="1" oninput="show_time(this.value, 0)">
-                            <br>
-                            <span>Добавление секунд на ход: </span><span class="time_for_game">3</span>
-                            <input name="range" type="range", class="range", value="3" min="0" max="30" step="1" oninput="show_time(this.value, 1)">
-                        </div>
+    <div class="start_game_block">
+        <div class="container_start_game">
+            <div class="container_extra">
+                <h1>Сыграть с компьютером</h1>
+                <div class="control_time_block">
+                    <form>
+                        <span>Контроль времени: </span>
+                        <select class="time_control">
+                            <option selected>Отсутствует</option>
+                            <option>По часам</option>
+                        </select>
+                    </form>
+                    <div class="extra_time_menu">
+                        <span>Минут на партию: </span><span class="time_for_game">5</span>
+                        <input name="range" type="range", class="range", value="7" min="0" max="32" step="1" oninput="show_time(this.value, 0)">
+                        <br>
+                        <span>Добавление секунд на ход: </span><span class="time_for_game">3</span>
+                        <input name="range" type="range", class="range", value="3" min="0" max="30" step="1" oninput="show_time(this.value, 1)">
                     </div>
-                    <div class="color_start_game_block">
-                        <form>
-                            <span>Цвет: </span>
-                            <select class="color_control">
-                                <option selected>Случайный</option>
-                                <option>Белый</option>
-                                <option>Черный</option>
-                            </select>
-                        </form>
-                    </div>
-                    <a class ="start_game_call">Играть с компьютером</a>
                 </div>
-                <span class="close">×</span>
+                <div class="color_start_game_block">
+                    <form>
+                        <span>Цвет: </span>
+                        <select class="color_control">
+                            <option selected>Случайный</option>
+                            <option>Белый</option>
+                            <option>Черный</option>
+                        </select>
+                    </form>
+                </div>
+                <a class ="start_game_call">Играть с компьютером</a>
             </div>
+            <span class="close">×</span>
         </div>
+    </div>
 
-        <div class="login_block">
-            <div class="container_login">
-                <form>
-                    <div class="login_main_text">Войти</div>
-                    <div class="login_text">Логин или электронная почта</div>
-                    <input class="login_inp" type="text" name="login" value="">
-                    <div class="login_text">Пароль</div>
-                    <input class="password_inp" type="password" name="password"><br>
-                    <button type="button" id="enter">Войти</button>
-                </form>
-            </div>
+    <div class="login_block">
+        <div class="container_login">
+            <form>
+                <div class="login_main_text">Войти</div>
+                <div class="login_text">Логин или электронная почта</div>
+                <input class="login_inp" type="text" name="login" value="">
+                <div class="login_text">Пароль</div>
+                <input class="password_inp" type="password" name="password"><br>
+                <button type="button" id="enter">Войти</button>
+            </form>
         </div>
+    </div>
 
 </body>
 </html>
