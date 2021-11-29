@@ -1,4 +1,6 @@
-var map = new Array(64), count_stroke = 0, colorStroke = "white";
+var map = new Array(64), count_stroke = 0, colorStroke = "white", my_color = localStorage.getItem('my_color'), time_1 = localStorage.getItem('time'), 
+time_2 = localStorage.getItem('time'), extra_time = localStorage.getItem('extra_time'), first_timer = new Date(), second_timer = new Date();
+
 map = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 
 '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P','R', 'N', 'B', 'Q', 'K', 
 'B', 'N', 'R']
@@ -7,6 +9,7 @@ list_stroke[count_stroke] = Object.assign({}, map);
 
 $(function () {
     table_create();
+    service_start();
     setDroppable();
     //setInterval('showFiguresPHP()', 3000)
 });
@@ -33,7 +36,7 @@ function setDraggable() {
 function setDroppable() {
     $('.square').droppable({
         drop: function (event, ui) {
-            let fromPoly = ui.draggable.attr('id');
+            let fromPoly = ui.draggable.attr('name');
             let toPoly = this.id;
             moveFigure(fromPoly, toPoly);
         }
@@ -55,10 +58,20 @@ function moveFigure(fromPoly, toPoly){
         map[fromPoly] = '0';
         count_stroke += 1;
         list_stroke[count_stroke] = Object.assign({}, map);
-        if (colorStroke == "white")
+        if (colorStroke == "white"){
+            if (count_stroke > 2 && localStorage.getItem('time') != 0){
+                time_1 += extra_time;
+                showTime(colorStroke);
+            }
             colorStroke = "black";
-        else if (colorStroke == "black")
+        }
+        else if (colorStroke == "black"){
+            if (count_stroke > 2 && localStorage.getItem('time') != 0){
+                time_2 += extra_time;
+                showTime(colorStroke);
+            }
             colorStroke = "white";
+        }
         setDraggable();
     }
     else {
@@ -190,11 +203,10 @@ function table_create(){
 }
 
 function figure_create() {
-    let tds = document.getElementsByTagName("td");
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-            tds[i * 8 + j].innerHTML = getFigures(map[i * 8 + j], i * 8 + j)
-        }
+    for (let i = 0; i < 64; i++) {
+        let tds = document.getElementById(i);
+        tds.innerHTML = "";
+        tds.innerHTML = getFigures(map[i], i);
     }
     setDraggable();
 }
@@ -202,43 +214,198 @@ function figure_create() {
 function getFigures(figure, cord){
     if(localStorage.getItem('figure') == "images"){
         switch (figure){
-            case 'k' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'q' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'r' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'n' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'b' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'p' : return "<div class='figure-black' id='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'k' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'q' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'r' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'n' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'b' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'p' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
 
-            case 'K' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'Q' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'R' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'N' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'B' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'P' : return "<div class='figure-white' id='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'K' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'Q' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'R' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'N' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'B' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'P' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
             case '0' : return "";
         }
     }
     else if (localStorage.getItem('figure') == "ascii"){
         switch (figure){
-            case 'k' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9818;</div>".replace('$cord', cord);
-            case 'q' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9819;</div>".replace('$cord', cord);
-            case 'r' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9820;</div>".replace('$cord', cord);
-            case 'n' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9822;</div>".replace('$cord', cord);
-            case 'b' : return "<div class='figure-black' id='$cord' style='padding-bottom: 20px'>&#9821;</div>".replace('$cord', cord);
-            case 'p' : return "<div class='figure-black' id='$cord' style='padding-bottom: 15px'>&#9823;</div>".replace('$cord', cord);
+            case 'k' : return "<div class='figure-black' name='$cord' style='padding-bottom: 20px'>&#9818;</div>".replace('$cord', cord);
+            case 'q' : return "<div class='figure-black' name='$cord' style='padding-bottom: 20px'>&#9819;</div>".replace('$cord', cord);
+            case 'r' : return "<div class='figure-black' name='$cord' style='padding-bottom: 20px'>&#9820;</div>".replace('$cord', cord);
+            case 'n' : return "<div class='figure-black' name='$cord' style='padding-bottom: 20px'>&#9822;</div>".replace('$cord', cord);
+            case 'b' : return "<div class='figure-black' name='$cord' style='padding-bottom: 20px'>&#9821;</div>".replace('$cord', cord);
+            case 'p' : return "<div class='figure-black' name='$cord' style='padding-bottom: 15px'>&#9823;</div>".replace('$cord', cord);
 
-            case 'K' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9812;</div>".replace('$cord', cord);
-            case 'Q' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9813;</div>".replace('$cord', cord);
-            case 'R' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9814;</div>".replace('$cord', cord);
-            case 'N' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9816;</div>".replace('$cord', cord);
-            case 'B' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9815;</div>".replace('$cord', cord);
-            case 'P' : return "<div class='figure-white' id='$cord' style='padding-bottom: 20px'>&#9817;</div>".replace('$cord', cord);
+            case 'K' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9812;</div>".replace('$cord', cord);
+            case 'Q' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9813;</div>".replace('$cord', cord);
+            case 'R' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9814;</div>".replace('$cord', cord);
+            case 'N' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9816;</div>".replace('$cord', cord);
+            case 'B' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9815;</div>".replace('$cord', cord);
+            case 'P' : return "<div class='figure-white' name='$cord' style='padding-bottom: 20px'>&#9817;</div>".replace('$cord', cord);
             case '0' : return "";
         }
     }
 }
 
 // Служебные
+
+function setTimer(){
+    let enter;
+    if (count_stroke == 1){
+        first_timer = new Date();
+        second_timer = new Date();
+    }
+    if (count_stroke > 1){
+        if (colorStroke == "white"){
+            enter = document.getElementById("white_timer");
+
+            if (time_1 <= 0) {
+                clearInterval(timer);
+                alert("У белых закончилось время");
+            } 
+            else {
+                showTime(colorStroke);
+            }
+            let tmp = new Date();
+            let differ = (tmp.getTime() - first_timer.getTime()) / 1000;
+            time_1 -= differ;
+            first_timer = new Date();
+            second_timer = new Date();
+        }
+        else if (colorStroke == "black"){
+            enter = document.getElementById("black_timer");
+
+            if (time_2 <= 0) {
+                clearInterval(timer);
+                alert("У чёрных закончилось время");
+            } 
+            else {
+                showTime(colorStroke);
+            }
+            let tmp = new Date();
+            let differ = (tmp.getTime() - second_timer.getTime()) / 1000;
+            time_2 -= differ;
+            first_timer = new Date();
+            second_timer = new Date();
+        }
+    }
+    
+}
+
+function showTime(type){
+    if (type == "white"){
+        enter = document.getElementById("white_timer");
+        let enter_time = Math.round(time_1);
+        enter.innerHTML = transform_time(enter_time);
+
+        let elem_bar_2 = document.getElementsByClassName("white_time_bar")[0];
+        let tmp = parseInt(localStorage.getItem('time')) * 60;
+        elem_bar_2.value = Math.round(enter_time / tmp * 100);
+    }
+
+
+    
+    if (type == "black"){
+        enter = document.getElementById("black_timer");
+        let enter_time = Math.round(time_2);
+        enter.innerHTML = transform_time(enter_time);
+
+        let elem_bar_1 = document.getElementsByClassName("black_time_bar")[0];
+        let tmp = parseInt(localStorage.getItem('time')) * 60;
+        elem_bar_1.value = Math.round(enter_time / tmp * 100);
+    }
+}
+
+function service_start(){
+    time_1 = parseInt(time_1) * 60;
+    time_2 = parseInt(time_2) * 60;
+    if (my_color == "black"){
+        let elem = document.getElementsByTagName("td")[0];
+        if (elem.id == 0) {
+            reverse_board();
+        }
+    }
+    if (localStorage.getItem('time') != 0) {
+        let elem_1 = document.getElementsByClassName("timer")[0];
+        let elem_2 = document.getElementsByClassName("timer")[1];
+        elem_1.style.display = "inline";
+        elem_2.style.display = "inline";
+        let enter_1 = document.getElementsByClassName("time_enter")[0];
+        let enter_2 = document.getElementsByClassName("time_enter")[1];
+
+        let elem_bar_1 = document.getElementsByClassName("black_time_bar")[0];
+        let elem_bar_2 = document.getElementsByClassName("white_time_bar")[0];
+        elem_bar_1.style.display = "inline";
+        elem_bar_2.style.display = "inline";
+
+        extra_time = parseInt(extra_time);
+        
+        let strTimer = transform_time(time_1);
+    
+        enter_1.innerHTML = strTimer;
+        enter_2.innerHTML = strTimer;
+        
+        if (my_color == "black"){
+            let elem_tim_1 = document.getElementsByClassName("time_enter")[0];
+            let elem_tim_2 = document.getElementsByClassName("time_enter")[1];
+            let elem_bar_1 = document.getElementsByClassName("black_time_bar")[0];
+            let elem_bar_2 = document.getElementsByClassName("white_time_bar")[0];
+
+            elem_tim_1.id = "white_timer";
+            elem_tim_2.id = "black_timer";
+        
+        }
+        setInterval('setTimer()', 10);
+    }
+        
+}
+
+function transform_time(time_1){
+    seconds = time_1%60
+    minutes = time_1/60%60
+    hour = time_1/60/60%60
+    let strTimer;
+    if (time_1 >= 3600){
+        if (minutes < 10){
+            if (seconds < 10)
+                strTimer = `${Math.trunc(hour)}:0${Math.trunc(minutes)}:0${seconds}`;
+            else
+                strTimer = `${Math.trunc(hour)}:0${Math.trunc(minutes)}:${seconds}`;
+        }
+        else {
+            if (seconds < 10)
+                strTimer = `${Math.trunc(hour)}:${Math.trunc(minutes)}:0${seconds}`;
+            else
+                strTimer = `${Math.trunc(hour)}:${Math.trunc(minutes)}:${seconds}`;
+        }
+    }
+        
+    else if (time_1 < 3600){
+        if (minutes < 10){
+            if (seconds < 10)
+                strTimer = `0${Math.trunc(minutes)}:0${seconds}`;
+            else
+                strTimer = `${Math.trunc(minutes)}:${seconds}`;
+        }
+        else {
+            if (seconds < 10)
+                strTimer = `${Math.trunc(minutes)}:0${seconds}`;
+            else
+                strTimer = `${Math.trunc(minutes)}:${seconds}`;
+        }
+    }
+    else if (time_1 < 60){
+        strTimer = `${seconds}`;
+        if (seconds < 10)
+            strTimer = `0:0${seconds}`;
+        else
+            strTimer = `0:${seconds}`;
+    }
+    return strTimer;
+}
 
 function stockfish_move() {
     var stockfish = new Worker('/stockfish.js-master/stockfish.js');
@@ -309,8 +476,36 @@ function fullNext_stroke(){
     setDraggable();
 }
 
-function reverse(){
-    map = map.reverse();
+function reverse_board() {
+    for (let i = 0; i < 32; i++){
+        let elem_1 = document.getElementById(i);
+        let elem_2 = document.getElementById(63 - i);
+        elem_1.id = 63 - i;
+        elem_2.id = i;
+        
+    }
+
+    if (localStorage.getItem('time') != 0){
+
+        let elem_tim_1 = document.getElementsByClassName("time_enter")[0];
+        let elem_tim_2 = document.getElementsByClassName("time_enter")[1];
+        let elem_bar_1 = document.getElementsByClassName("black_time_bar")[0];
+        let elem_bar_2 = document.getElementsByClassName("white_time_bar")[0];
+        elem_bar_1.className = "white_time_bar";
+        elem_bar_2.className = "black_time_bar";
+        if (elem_tim_1.id != "white_timer"){
+            elem_tim_2.id = "b";
+            elem_tim_1.id = "white_timer";
+            elem_tim_2.id = "black_timer";
+        }
+        else {
+            elem_tim_1.id = "b";
+            elem_tim_2.id = "white_timer";
+            elem_tim_1.id = "black_timer";
+        }
+        showTime("white");
+        showTime("black");
+    }
     figure_create();
 }
 
