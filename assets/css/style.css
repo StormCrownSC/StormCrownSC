@@ -1,9 +1,3 @@
-.figure-black, .figure-white {
-    font-size: 60px;
-    max-height: 60px;
-    cursor: pointer;
-}
-
 /* LIGHT THEME */
 .light-theme {
     color: #333333;
@@ -429,130 +423,554 @@
 
 /*  CHESS */
 
+@media screen and (min-width: 1001px) {
 
-.light-theme .chess_block {
-    z-index: 5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: 100%;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    justify-content: center;
+    .figure-black, .figure-white {
+        font-size: 60px;
+        max-height: 60px;
+        cursor: pointer;
+    }
 
-}
+    .figure_img {
+        width: 60px; 
+        height: 60px;
+    }
 
-.light-theme .container_chess{
-    position: relative;
+    .container_chess_main {
+        display: flex;
+        flex-direction: row;
+    }
 
-    display: -webkit-box;
+    .dark-theme .chess_block {
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        min-width: 100%;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
 
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-align: center;
-    align-items: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-}
+    }
 
-.light-theme table {
-    width: 640px;
-    height: 640px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
+    .dark-theme .container_chess {
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
 
-.light-theme .black {
-    width: 80px;
-    height: 80px;
-    background-color: #B98A63;
+    .dark-theme table {
+        width: 640px;
+        height: 640px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
 
-    vertical-align: center;
-    text-align: center;
-}
+    .dark-theme .black {
+        width: 80px;
+        height: 80px;
+        background-color: #B98A63;
 
-.light-theme .white {
-    width: 80px;
-    height: 80px;
-    background-color: #F0DFB5;
+        vertical-align: center;
+        text-align: center;
+    }
 
-    vertical-align: center;
-    text-align: center;
-}
+    .dark-theme .white {
+        width: 80px;
+        height: 80px;
+        background-color: #F0DFB5;
 
-.light-theme .menu_chess {
-    margin: 30px;
-    position: relative;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-align: start;
-    align-items: flex-start;
-    -webkit-box-pack: center;
-    justify-content: center;
-}
+        vertical-align: center;
+        text-align: center;
+    }
 
-.light-theme .timer{
-    display: none;
-    height: 50px;
-    width: 100px;
-    vertical-align: center;
-    text-align: center;
-    padding: 5px;
-    background-color: lightgrey;
+    .dark-theme .menu_chess {
+        margin: 30px;
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+
+    .dark-theme .timer{
+        display: none;
+        height: 50px;
+        width: 100px;
+        vertical-align: center;
+        text-align: center;
+        padding: 5px;
+        background-color: rgb(54, 52, 48);
+        
+    }
+
+    .dark-theme .white_time_bar, .dark-theme .black_time_bar {
+        display: none;
+        width: 300px; 
+        margin-left: 6px;
+    }
+
+    .dark-theme .time_enter {
+        color: rgb(186, 174, 146);
+        font-size: 30px;
+    }
+
+    .dark-theme .container_menu {
+        display: -webkit-box;
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        height: 200px;
+        background-color: rgb(54, 52, 48);
+    }
+
+    .dark-theme .right-right, .dark-theme .right, .dark-theme .left, .dark-theme .left-left, .dark-theme .reverse {
+        width: 40px;
+        height: 40px;
+    }
+
+    .dark-theme button {
+        margin: 10px;
+        border: 0;
+        background-color: rgb(54, 52, 48);
+    }
+
+    .dark-theme img {
+        pointer-events: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /*  LIGHT  */
+
+    .light-theme .chess_block {
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        min-width: 100%;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
     
-}
-
-.light-theme .white_time_bar, .light-theme .black_time_bar {
+    }
     
-    display: none;
-    width: 300px; 
-    margin-left: 6px;
+    .light-theme .container_chess{
+        position: relative;
+    
+        display: -webkit-box;
+    
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+    
+    .light-theme table {
+        width: 640px;
+        height: 640px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    
+    .light-theme .black {
+        width: 80px;
+        height: 80px;
+        background-color: #B98A63;
+    
+        vertical-align: center;
+        text-align: center;
+    }
+    
+    .light-theme .white {
+        width: 80px;
+        height: 80px;
+        background-color: #F0DFB5;
+    
+        vertical-align: center;
+        text-align: center;
+    }
+    
+    .light-theme .menu_chess {
+        margin: 30px;
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+    
+    .light-theme .timer{
+        display: none;
+        height: 50px;
+        width: 100px;
+        vertical-align: center;
+        text-align: center;
+        padding: 5px;
+        background-color: lightgrey;
+        
+    }
+    
+    .light-theme .white_time_bar, .light-theme .black_time_bar {
+        
+        display: none;
+        width: 300px; 
+        margin-left: 6px;
+    }
+    
+    .light-theme .time_enter {
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+    }
+    
+    .light-theme .container_menu {
+        display: -webkit-box;
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        height: 200px;
+        padding-top: 10px;
+        background-color: lightgrey;
+    }
+    
+    .light-theme .right-right, .light-theme .right, .light-theme .left, .light-theme .left-left, .light-theme .reverse {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .light-theme button {
+        margin: 10px;
+        background-color: lightgray;
+        border: 0;
+    }
+    
+    .light-theme img {
+        pointer-events: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
 }
 
-.light-theme .time_enter {
-    color: rgb(0, 0, 0);
-    font-size: 30px;
+
+@media screen and (max-width: 1000px) {
+
+    .figure-black, .figure-white {
+        font-size: 30px;
+        max-height: 30px;
+        cursor: pointer;
+    }
+
+    .figure_img {
+        width: 30px; 
+        height: 30px;
+    }
+
+    .container_chess_main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .dark-theme .chess_block {
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        min-width: 100%;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+
+    }
+
+    .dark-theme .container_chess {
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+
+    .dark-theme table {
+        width: 384px;
+        height: 384px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .dark-theme .black {
+        width: 40px;
+        height: 40px;
+        background-color: #B98A63;
+
+        vertical-align: center;
+        text-align: center;
+    }
+
+    .dark-theme .white {
+        width: 40px;
+        height: 40px;
+        background-color: #F0DFB5;
+
+        vertical-align: center;
+        text-align: center;
+    }
+
+    .dark-theme .menu_chess {
+        margin: 15px;
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+
+    .dark-theme .timer{
+        display: none;
+        height: 25px;
+        width: 50px;
+        vertical-align: center;
+        text-align: center;
+        padding: 5px;
+        background-color: rgb(54, 52, 48);
+        
+    }
+
+    .dark-theme .white_time_bar, .dark-theme .black_time_bar {
+        display: none;
+        width: 210px; 
+        margin-left: 6px;
+    }
+
+    .dark-theme .time_enter {
+        color: rgb(186, 174, 146);
+        font-size: 20px;
+    }
+
+    .dark-theme .container_menu {
+        display: -webkit-box;
+        min-width: 220px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        height: 100px;
+        background-color: rgb(54, 52, 48);
+    }
+
+    .dark-theme .right-right, .dark-theme .right, .dark-theme .left, .dark-theme .left-left, .dark-theme .reverse {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dark-theme .btn_chess {
+        width: 15px;
+        height: 15px;
+    }
+
+    .dark-theme button {
+        margin: 10px;
+        border: 0;
+        background-color: rgb(54, 52, 48);
+    }
+
+    .dark-theme img {
+        pointer-events: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .figure-black, .figure-white {
+        font-size: 30px;
+        max-height: 30px;
+        cursor: pointer;
+    }
+
+    .light-theme .chess_block {
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        min-width: 100%;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+    
+    }
+    
+    .light-theme .container_chess{
+        position: relative;
+    
+        display: -webkit-box;
+    
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        align-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+    
+    .light-theme table {
+        width: 320px;
+        height: 320px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    
+    .light-theme .black {
+        width: 40px;
+        height: 40px;
+        background-color: #B98A63;
+    
+        vertical-align: center;
+        text-align: center;
+    }
+    
+    .light-theme .white {
+        width: 40px;
+        height: 40px;
+        background-color: #F0DFB5;
+    
+        vertical-align: center;
+        text-align: center;
+    }
+    
+    .light-theme .menu_chess {
+        margin: 30px;
+        position: relative;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+    
+    .light-theme .timer{
+        display: none;
+        height: 50px;
+        width: 100px;
+        vertical-align: center;
+        text-align: center;
+        padding: 5px;
+        background-color: lightgrey;
+        
+    }
+    
+    .light-theme .white_time_bar, .light-theme .black_time_bar {
+        
+        display: none;
+        width: 300px; 
+        margin-left: 6px;
+    }
+    
+    .light-theme .time_enter {
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+    }
+    
+    .light-theme .container_menu {
+        display: -webkit-box;
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        height: 200px;
+        padding-top: 10px;
+        background-color: lightgrey;
+    }
+    
+    .light-theme .right-right, .light-theme .right, .light-theme .left, .light-theme .left-left, .light-theme .reverse {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .light-theme button {
+        margin: 10px;
+        background-color: lightgray;
+        border: 0;
+    }
+    
+    .light-theme img {
+        pointer-events: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
 }
 
-.light-theme .container_menu {
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    height: 200px;
-    padding-top: 10px;
-    background-color: lightgrey;
-}
 
-.light-theme .right-right, .light-theme .right, .light-theme .left, .light-theme .left-left, .light-theme .reverse {
-    width: 40px;
-    height: 40px;
-}
-
-.light-theme button {
-    margin: 10px;
-    background-color: lightgray;
-    border: 0;
-}
-
-.light-theme img {
-    pointer-events: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 
 
 /*  EDUCATION  */
@@ -992,141 +1410,18 @@
     background: rgb(38, 36, 33);
 }
 
-/*  CHESS */
-
-
-.dark-theme .chess_block {
-    z-index: 5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    min-width: 100%;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-
-}
-
-.dark-theme .container_chess {
-    position: relative;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-align: center;
-    align-items: center;
-    align-content: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-}
-
-.dark-theme table {
-    width: 640px;
-    height: 640px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-.dark-theme .black {
-    width: 80px;
-    height: 80px;
-    background-color: #B98A63;
-
-    vertical-align: center;
-    text-align: center;
-}
-
-.dark-theme .white {
-    width: 80px;
-    height: 80px;
-    background-color: #F0DFB5;
-
-    vertical-align: center;
-    text-align: center;
-}
-
-.dark-theme .menu_chess {
-    margin: 30px;
-    position: relative;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-align: start;
-    align-items: flex-start;
-    -webkit-box-pack: center;
-    justify-content: center;
-}
-
-.dark-theme .timer{
-    display: none;
-    height: 50px;
-    width: 100px;
-    vertical-align: center;
-    text-align: center;
-    padding: 5px;
-    background-color: rgb(54, 52, 48);
-    
-}
-
-.dark-theme .white_time_bar, .dark-theme .black_time_bar {
-    display: none;
-    width: 300px; 
-    margin-left: 6px;
-}
-
-.dark-theme .time_enter {
-    color: rgb(186, 174, 146);
-    font-size: 30px;
-}
-
-.dark-theme .container_menu {
-    display: -webkit-box;
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    height: 200px;
-    background-color: rgb(54, 52, 48);
-}
-
-.dark-theme .right-right, .dark-theme .right, .dark-theme .left, .dark-theme .left-left, .dark-theme .reverse {
-    width: 40px;
-    height: 40px;
-}
-
-.dark-theme button {
-    margin: 10px;
-    border: 0;
-    background-color: rgb(54, 52, 48);
-}
-
-.dark-theme img {
-    pointer-events: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 
 
 /*  EDUCATION  */
+
 .dark-theme .edu {
-    margin-left: 250px; 
-    margin-right: 250px;
     position: absolute;
     top: 150px;
 }
 
 .dark-theme .education_main .edu {
-    margin-left: 250px; 
-    margin-right: 250px;
+    margin-left: 50px; 
+    margin-right: 50px;
     position: absolute;
     top: 100px;
 }

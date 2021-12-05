@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+    <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
     <title>Игра</title>
 </head>
 <body class="dark-theme">
@@ -34,23 +35,25 @@
 
 
     <main>
-        <div class="container_chess">
-        </div>
-        <div class="menu_chess">
-            <div class="timer"><span class="time_enter" id="black_timer"></span></div>
-            <div class="container_menu">
-                <div><progress class="black_time_bar" max="100" value="100"></progress></div>
-                <div>
-                    <button class="reverse" onclick="reverse_board();"><img height="20px" width="20px" src="/assets/images/reverse.png"></button>
-                    <button class="left-left" onclick="fullBack_stroke();"><img height="20px" width="20px" src="/assets/images/left-left.png"></button>
-                    <button class="left" onclick="back_stroke();"><img height="20px" width="20px" src="/assets/images/left.png"></button>
-                    <button class="right" onclick="next_stroke();"><img height="20px" width="20px" src="/assets/images/right.png"></button>
-                    <button class="right-right" onclick="fullNext_stroke();"><img height="20px" width="20px" src="/assets/images/right-right.png"></button>
-                </div>
-                <div class="list_of_stroke" style="height: 200px;"></div>
-                <div><progress class="white_time_bar" max="100" value="100"></progress></div>
-            </div>        
-            <div class="timer"><span class="time_enter" id="white_timer"></span></div>
+        <div class="container_chess_main">
+            <div class="container_chess">
+            </div>
+            <div class="menu_chess">
+                <div class="timer"><span class="time_enter" id="black_timer"></span></div>
+                <div class="container_menu">
+                    <div><progress class="black_time_bar" max="100" value="100"></progress></div>
+                    <div>
+                        <button class="reverse" onclick="reverse_board();"><img class="btn_chess" height="20px" width="20px" src="/assets/images/reverse.png"></button>
+                        <button class="left-left" onclick="fullBack_stroke();"><img class="btn_chess" height="20px" width="20px" src="/assets/images/left-left.png"></button>
+                        <button class="left" onclick="back_stroke();"><img class="btn_chess" height="20px" width="20px" src="/assets/images/left.png"></button>
+                        <button class="right" onclick="next_stroke();"><img class="btn_chess" height="20px" width="20px" src="/assets/images/right.png"></button>
+                        <button class="right-right" onclick="fullNext_stroke();"><img class="btn_chess" height="20px" width="20px" src="/assets/images/right-right.png"></button>
+                    </div>
+                    <div class="list_of_stroke" style="height: 200px;"></div>
+                    <div><progress class="white_time_bar" max="100" value="100"></progress></div>
+                </div>        
+                <div class="timer"><span class="time_enter" id="white_timer"></span></div>
+            </div>
         </div>
 
     </main>
@@ -70,6 +73,7 @@
 
     <script language="JavaScript" type="text/javascript" src="/assets/js/others.js"></script>
     <script language="JavaScript" type="text/javascript" src="/assets/js/chess_table.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/assets/bot/chess.js/chess.js-master/chess.js"></script>
 
 </body>
 </html>

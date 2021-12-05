@@ -11,6 +11,7 @@ $(function () {
     table_create();
     service_start();
     setDroppable();
+    chess_move();
     //setInterval('showFiguresPHP()', 3000)
 });
 
@@ -214,19 +215,19 @@ function figure_create() {
 function getFigures(figure, cord){
     if(localStorage.getItem('figure') == "images"){
         switch (figure){
-            case 'k' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'q' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'r' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'n' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'b' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'p' : return "<div class='figure-black' name='$cord'><img src='../../assets/images/black_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'k' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_king.png'></div>".replace('$cord', cord);
+            case 'q' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_queen.png'></div>".replace('$cord', cord);
+            case 'r' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_rock.png'></div>".replace('$cord', cord);
+            case 'n' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_knight.png'></div>".replace('$cord', cord);
+            case 'b' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_bishop.png'></div>".replace('$cord', cord);
+            case 'p' : return "<div class='figure-black' name='$cord'><img class='figure_img' src='../../assets/images/black_pawn.png'></div>".replace('$cord', cord);
 
-            case 'K' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_king.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'Q' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_queen.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'R' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_rock.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'N' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_knight.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'B' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_bishop.png' width='60px' height='60px'></div>".replace('$cord', cord);
-            case 'P' : return "<div class='figure-white' name='$cord'><img src='../../assets/images/white_pawn.png' width='60px' height='60px'></div>".replace('$cord', cord);
+            case 'K' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_king.png'></div>".replace('$cord', cord);
+            case 'Q' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_queen.png'></div>".replace('$cord', cord);
+            case 'R' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_rock.png'></div>".replace('$cord', cord);
+            case 'N' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_knight.png'></div>".replace('$cord', cord);
+            case 'B' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_bishop.png'></div>".replace('$cord', cord);
+            case 'P' : return "<div class='figure-white' name='$cord'><img class='figure_img' src='../../assets/images/white_pawn.png'></div>".replace('$cord', cord);
             case '0' : return "";
         }
     }
@@ -407,12 +408,15 @@ function transform_time(time_1){
     return strTimer;
 }
 
-function stockfish_move() {
-    var stockfish = new Worker('/stockfish.js-master/stockfish.js');
-    stockfish.postMessage('go depth 15');
-    stockfish.onmessage = function(event) {
-        console.log(event.data);
-    };
+function chess_move() {
+    let chess = new Chess()
+
+    while (!chess.game_over()) {
+        moves = chess.moves()
+        move = moves[Mathfloor(Math.random() * moves.length)]
+        chess.move(move)
+    }
+    console.log(chess.pgn())
 }
 
 function generationFen(board){
