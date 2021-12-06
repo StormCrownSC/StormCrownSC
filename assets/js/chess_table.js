@@ -11,8 +11,6 @@ $(function () {
     table_create();
     service_start();
     setDroppable();
-    chess_move();
-    //setInterval('showFiguresPHP()', 3000)
 });
 
 function setDraggable() {
@@ -41,7 +39,6 @@ function setDroppable() {
             let toPoly = this.id;
             moveFigure(fromPoly, toPoly);
         }
-
     })
 }
 
@@ -408,17 +405,6 @@ function transform_time(time_1){
     return strTimer;
 }
 
-function chess_move() {
-    let chess = new Chess()
-
-    while (!chess.game_over()) {
-        moves = chess.moves()
-        move = moves[Mathfloor(Math.random() * moves.length)]
-        chess.move(move)
-    }
-    console.log(chess.pgn())
-}
-
 function generationFen(board){
     let fen = "", RANK_SEPARATOR = "/";
     for (let i = 0; i < 8; i++) {
@@ -519,10 +505,6 @@ function transformToMap(count) {
         temp.push(value);
     }
     return temp;
-}
-
-function showFiguresPHP() {
-    console.log(map);
 }
 
 function getColor(elem){
