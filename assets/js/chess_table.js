@@ -405,33 +405,6 @@ function transform_time(time_1){
     return strTimer;
 }
 
-function generationFen(board){
-    let fen = "", RANK_SEPARATOR = "/";
-    for (let i = 0; i < 8; i++) {
-        let empty = 0;
-        let rankFen = "";
-        for (let j = 0; j < 8; j++) {
-            if(board[i * 8 + j] == 0) {
-                empty++;
-            }
-            else {
-                if (empty != 0)
-                    rankFen += empty;
-                rankFen += board[i * 8 + j];
-                empty = 0;
-            }
-        }
-        if (empty != 0) rankFen += empty;
-        fen += rankFen;
-        if (!(i == 7))
-            fen += RANK_SEPARATOR;
-        else {
-            fen += " ";
-        }
-    }
-    return fen;
-}
-
 function back_stroke(){
     if (count_stroke > 0) {
         count_stroke -= 1;
