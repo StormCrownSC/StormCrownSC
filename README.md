@@ -32,9 +32,9 @@ I'm a third-year student of RTU MIREA. I study software engineering.
 ![docker](https://img.shields.io/badge/-Docker-EEE.svg?style=for-the-badge&logo=docker&logoColor=black)
 
 
-# Top Repositories
-<img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=StormCrownSC&repo=LeetCode&theme=buefy" />
-
+<!--# Top Repositories
+<img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=StormCrownSC&repo=LeetCode&theme=buefy"/>
+-->
 # 📈 My github stats
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=StormCrownSC&show_icons=true&theme=gotham" alt="StormCrownSC" />
