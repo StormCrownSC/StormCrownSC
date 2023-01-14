@@ -35,6 +35,8 @@ I'm a third-year student of RTU MIREA. I study software engineering.
 <!--# Top Repositories
 <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=StormCrownSC&repo=LeetCode&theme=buefy"/>
 -->
+<!--
 # 📈 My github stats
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=StormCrownSC&show_icons=true&theme=gotham" alt="StormCrownSC" />
+-->
