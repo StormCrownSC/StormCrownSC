@@ -8,6 +8,7 @@ I'm a third-year student of RTU MIREA. I study software engineering.
 
 ## Languages
 
+![golang](https://img.shields.io/badge/Golang-3776AB?style=for-the-badge&logo=golang&logoColor=white)
 ![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![c++](https://img.shields.io/badge/-c++-black?style=for-the-badge&logo=c%2B%2B&logoColor=blue)
